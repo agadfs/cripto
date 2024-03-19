@@ -10,6 +10,7 @@
     "@metamask/sdk-react": "^0.17.2",
     "@mui/base": "^5.0.0-beta.39",
     "@mui/icons-material": "^5.15.13",
+    "@mui/x-charts": "^6.19.5",
     "@reduxjs/toolkit": "^2.2.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

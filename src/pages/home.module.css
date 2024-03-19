@@ -1,0 +1,49 @@
+.homebody{
+    margin-top: 30px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    
+}
+.coinslistbody{
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    border-radius: 5px;
+    gap:15px;
+   
+}
+
+.coinbutton{
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding:10px;
+}
+.infotimer{
+    position: absolute;
+    top:200px;
+    left:10px;
+    display: flex;
+    width: 360px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding:4px;
+    font-weight: 400;
+    font-size: 18px;
+}
+.infotimer0{
+    position: absolute;
+    top:140px;
+    left:10px;
+    display: flex;
+    width: 360px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding:4px;
+    font-weight: 400;
+    font-size: 18px;
+}

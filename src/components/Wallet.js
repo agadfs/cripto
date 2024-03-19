@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Web3 from "web3";
 import { useDispatch } from 'react-redux';
 import { setcurrency, setlanguage } from "../redux/slice";
-
+import styles from './Wallet.module.css'
 export default function Home() {
 
     const { lang, currency } = useSelector(state => state.useroptions);
@@ -28,13 +28,13 @@ export default function Home() {
         const selectedCurrency = event.target.value;
         dispatch(setcurrency(selectedCurrency));
         localStorage.setItem('currency', selectedCurrency)
-      };
-    
-      const handleLanguageChange = (event) => {
+    };
+
+    const handleLanguageChange = (event) => {
         const selectedLanguage = event.target.value;
         dispatch(setlanguage(selectedLanguage));
         localStorage.setItem('language', selectedLanguage)
-      };
+    };
     const disconnect = async () => {
         try {
             const accounts = await sdk?.disconnect();
@@ -52,7 +52,7 @@ export default function Home() {
         setAccount(id)
         const language = localStorage.getItem('language')
         const currencytype = localStorage.getItem('currency')
-        if(language && currency){
+        if (language && currency) {
             dispatch(setcurrency(currencytype));
             dispatch(setlanguage(language));
         }
@@ -77,49 +77,63 @@ export default function Home() {
         getBalance();
     }, [account]);
     return (
-        <div>
+        <div className={styles.walletbody} >
             <div>
-                <div>Choose the currency</div>
-                <select onChange={handleCurrencyChange} value={currency} >
-                    
-                    <option value="usd">USD</option>
-                    <option value="brl">BRL</option>
-                </select>
-            </div>
-            <div>
-            <div>Choose the language</div>
-                <select onChange={handleLanguageChange} value={lang}>
-                    
-                    <option value="usd">EN-USA</option>
-                    <option value="brl">PT-BR</option>
-                </select>
+
+
+                <div>
+                    <div>{lang === 'usd' ? 'Select the currency' : 'Selecione a moeda'}</div>
+                    <select onChange={handleCurrencyChange} value={currency} >
+
+                        <option value="usd">USD</option>
+                        <option value="brl">BRL</option>
+                    </select>
+                </div>
+                <div>
+                    <div>{lang === 'usd' ? 'Choose the language' : 'Escolha o idioma'}</div>
+                    <select onChange={handleLanguageChange} value={lang}>
+
+                        <option value="usd">EN-USA</option>
+                        <option value="brl">PT-BR</option>
+                    </select>
+                </div>
+
+
             </div>
 
-            <div>
-    {!account ?
-        <div>
-            <button style={{ padding: 10, margin: 10 }} onClick={connect}>
-                {lang === 'usd' ? 'Connect wallet' : 'Conectar carteira'}
-            </button>
-        </div> :
-        <div>
-            <button style={{ padding: 10, margin: 10 }} onClick={disconnect}>
-                {lang === 'usd' ? 'Disconnect wallet' : 'Desconectar carteira'}
-            </button>
-        </div>}
+            <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center', gap:'10px' }} >
+                {!account ?
+                    <div>
+                        <button  className={styles.buttonlink} onClick={connect}>
+                            {lang === 'usd' ? 'Connect wallet' : 'Conectar carteira'}
+                        </button>
+                    </div> :
+                    <div>
+                        <button className={styles.buttonlink} onClick={disconnect}>
+                            {lang === 'usd' ? 'Disconnect wallet' : 'Desconectar carteira'}
+                        </button>
+                    </div>}
 
-    {connected && (
-        <div>
-            <>
-                {chainId && `${lang === 'usd' ? 'Connected chain' : 'Rede conectada'}: ${chainId}`}
-                <p></p>
-                {account && `${lang === 'usd' ? 'Connected account' : 'Conta conectada'}: ${account}`}
-                <p></p>
-                {walletBalance ? <div>{lang === 'usd' ? 'You have' : 'Você tem'}: {walletBalance} Ethereum</div> : <div>{lang === 'usd' ? 'Could not see the balance of ethereum in your wallet' : 'Não foi possível ver o saldo de ethereum em sua carteira'}</div>}
-            </>
-        </div>
-    )}
-</div>
+                {connected && (
+                    <div style={{ display: 'flex', gap: '20px' }} >
+                        <>
+                            {chainId && `${lang === 'usd' ? 'Connected chain' : 'Rede conectada'}: ${chainId}`}
+                            <p></p>
+                            {account && `${lang === 'usd' ? 'Connected metamask account' : 'Conta metamask conectada'}: ${account}`}
+                            <p></p>
+                            {walletBalance ? <div>{lang === 'usd' ? 'You have' : 'Você tem'}: {walletBalance} Ethereum</div> : <div>{lang === 'usd' ? 'Could not see the balance of ethereum in your wallet' : 'Não foi possível ver o saldo de ethereum em sua carteira'}</div>}
+                        </>
+                    </div>
+                )}
+                <div>
+                <button className={styles.buttonlink} onClick={() => {
+                    window.location.href = '/';
+                }}>
+                            {lang === 'usd' ? 'Go back to home page' : 'Voltar a pagina inicial'}
+                        </button>
+                </div>
+                
+            </div>
 
 
         </div>

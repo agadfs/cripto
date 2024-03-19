@@ -195,7 +195,7 @@ export default function Coin() {
                                 {coin?.market_data?.price_change_percentage_60d_in_currency[currency]}%
                             </div>
                         </div>
-                        <div style={{display:'flex', gap: '8px'}}>
+                        <div style={{display:'flex', gap: '9px'}}>
                             <div>
                                 {lang === 'usd' ? <div> Last 200 days</div> : <div> Ultimos 200 dias</div>}
                             </div>
@@ -205,7 +205,7 @@ export default function Coin() {
                         </div>
                         <div style={{display:'flex', gap: '8px'}}>
                             <div>
-                                {lang === 'usd' ? <div> Last year</div> : <div> Ultimo ano</div>}
+                                {lang === 'usd' ? <div> Last year </div> : <div> Ultimo ano </div>}
                             </div>
                             <div style={{ color: coin?.market_data?.price_change_percentage_1y_in_currency[currency] < 0 ? 'red' : 'green' }}>
                                 {coin?.market_data?.price_change_percentage_1y_in_currency[currency]}%

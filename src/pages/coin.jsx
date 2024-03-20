@@ -109,15 +109,13 @@ export default function Coin() {
                     </div >
                     <div className={styles.upperinfotext} >
                         <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }} >
-                            {lang === 'usd' ? <div> Market Cap ({coin?.market_cap_rank}#)</div> : 
-                            <div> Capitalização de mercado ({coin?.market_cap_rank}#)</div>}
+                            {lang === 'usd' ? <div> Market Cap ({coin?.market_cap_rank}#)</div> : <div> Capitalização de mercado ({coin?.market_cap_rank}#)</div>}
 
                         </div>
                     </div>
                     <div className={styles.upperinfotextprice} >
                         {coin?.market_data?.current_price[currency]},00{currency === 'usd' ? <div >&nbsp;USD</div> : <div>&nbsp;BRL</div>}
                         <div style={{ display: 'flex', gap: '8px' }} >
-
                             <div style={{ display: 'flex', color: coin?.market_data?.price_change_percentage_24h_in_currency[currency] < 0 ? 'red' : 'green' }}>
                                 {coin?.market_data?.price_change_percentage_24h_in_currency[currency] < 0 ? (
                                     <div style={{ color: 'red' }}>

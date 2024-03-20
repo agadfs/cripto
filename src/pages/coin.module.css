@@ -1,50 +1,234 @@
-.biggerContainer{
-    
+.biggerContainer {
+
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    padding:10px;
+    padding: 10px;
     width: auto;
-    margin:10px;
+    margin: 5px;
     margin-top: 60px;
-    
+    border-radius: 5px;
+    border: 1px solid gray;
 }
-.coinInfoLeft{
+
+.coinInfoLeft {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:5px;
-    width: 70%;
+    gap: 5px;
+    width: 100%;
+    border-bottom: 2px solid rgb(184, 184, 184);
+    padding-bottom: 5px;
+
+
 }
-.coinInfoRight{
+
+.coinInfoRight {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:20px;
-    width: 30%;
+    gap: 20px;
+    width: auto;
 }
-.upperinfo{
+
+.upperinfo {
     display: flex;
     justify-content: space-evenly;
-    
-    width: 100%;
+    width: auto;
 }
-.chartbody{
+
+.chartbody {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 15px;
+    height: 100%;
+    
+    border:1px solid grey;
 }
-.middleinfo{
+
+.middleinfo {
     display: flex;
     justify-content: space-between;
-    width: 95%;
+    width: 100%;
+    margin-top: 30px;
     
+
+
+}
+
+.infobox {
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    height: auto;
+    border:1px solid grey;
     
 }
-.chartgraph{
+.infobox2 {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+   
+   
     
+}
+
+.infoboxsubinfo {
+    display: flex;
+    font-size: 18px;
+    gap: 20px;
+    border-top: 1px solid #55836d;
+    border-bottom: 3px solid #55836d;
+    padding-inline: 8px;
+    margin-inline: 5px;
+    border-radius: 5px;
+    justify-content: space-between;
+    font-family: sans-serif;
+    margin-top: 5px;
+
+}
+
+.infoboxsubinfo div {
+    font-size: 18px;
+    font-weight: 600;
+
+}
+
+.priceinfo {
+    
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: auto;
+    width: 100%;
+    padding: 25px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    margin-inline: 20px;
+    border:1px solid grey;
+    border-radius: 5px;
+}
+
+.priceinfotitle {
+
+    font-size: 24px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    font-weight: 600;
+
+}
+
+.priceinfodiv {
+    
+    border-bottom: 3px solid #55836d;
+    border-radius: 5px;
+    font-size: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    justify-content: space-between;
+    align-items: center;
+    font-family: sans-serif;
+    font-weight: 500;
+    padding-inline: 50px;
+}
+
+.chartgraph {
+    height: 360px;
+    width: 390px;
+}
+
+
+
+.aboutbox{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding-inline: 15px;
+    font-family: sans-serif;
+    font-size: 17px;
+    border:1px solid grey;
+}
+.infocontainer{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    width: 100%;
+    
+}
+.upperinfotext{
+    font-size: 25px ;
+    font-weight: bold ;
+    font-family: sans-serif;
+     margin-right: 20px;
+}
+.upperinfotextprice{
+    font-size: 25px ;
+    font-weight: bold ;
+    font-family: sans-serif;
+     margin-right: 20px;
+}
+.graphmodel{
+    width: auto; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px
+}
+@media screen and (max-width: 600px) {
+    .upperinfotext{
+        font-size: 14px;
+    }
+    .upperinfotextprice{
+        display: flex;
+        font-size: 14px ;
+        text-wrap: nowrap;
+        flex-wrap: wrap;
+        
+    }
+    .middleinfo {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap:10px;
+        width: 100%;
+        margin-top: 30px;
+        
+    
+    
+    }
+    .infobox2{
+        flex-direction: column-reverse;
+    }
+    .graphmodel{
+        width: auto; 
+        display: flex; 
+        flex-direction: column; 
+        gap: 10px
+    }
+    .chartbody{
+        width: 100%;
+    }
+    .biggerContainer{
+        margin: 0;
+        margin-top: 10px;
+    }
 }

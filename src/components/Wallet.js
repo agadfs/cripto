@@ -10,8 +10,13 @@ export default function Home() {
     const { lang, currency } = useSelector(state => state.useroptions);
     const [account, setAccount] = useState();
     const [walletBalance, setWalletBalance] = useState(null);
+    const [isBoxVisible, setIsBoxVisible] = useState(false);
+    const toggleBoxVisibility = () => {
+        setIsBoxVisible(!isBoxVisible);
+    };
     const dispatch = useDispatch();
     const { sdk, connected, connecting, provider, chainId } = useSDK();
+
     const connect = async () => {
         try {
             const accounts = await sdk?.connect();
@@ -37,9 +42,10 @@ export default function Home() {
     };
     const disconnect = async () => {
         try {
-            const accounts = await sdk?.disconnect();
-            localStorage.setItem('accountId', accounts)
-            setAccount();
+            const accounts = await sdk?.terminate();
+
+            setAccount(undefined);
+            localStorage.removeItem('accountId');
 
 
 
@@ -49,7 +55,11 @@ export default function Home() {
     };
     useEffect(() => {
         const id = localStorage.getItem('accountId')
-        setAccount(id)
+        if (id) {
+
+            setAccount(id)
+
+        }
         const language = localStorage.getItem('language')
         const currencytype = localStorage.getItem('currency')
         if (language && currency) {
@@ -78,9 +88,7 @@ export default function Home() {
     }, [account]);
     return (
         <div className={styles.walletbody} >
-            <div>
-
-
+            <div className={styles.langcurrency}>
                 <div>
                     <div>{lang === 'usd' ? 'Select the currency' : 'Selecione a moeda'}</div>
                     <select onChange={handleCurrencyChange} value={currency} >
@@ -101,10 +109,10 @@ export default function Home() {
 
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center', gap:'10px' }} >
+            <div className={styles.walletinfo} >
                 {!account ?
                     <div>
-                        <button  className={styles.buttonlink} onClick={connect}>
+                        <button className={styles.buttonlink} onClick={connect}>
                             {lang === 'usd' ? 'Connect wallet' : 'Conectar carteira'}
                         </button>
                     </div> :
@@ -113,29 +121,51 @@ export default function Home() {
                             {lang === 'usd' ? 'Disconnect wallet' : 'Desconectar carteira'}
                         </button>
                     </div>}
-
-                {connected && (
-                    <div style={{ display: 'flex', gap: '20px' }} >
-                        <>
-                            {chainId && `${lang === 'usd' ? 'Connected chain' : 'Rede conectada'}: ${chainId}`}
-                            <p></p>
-                            {account && `${lang === 'usd' ? 'Connected metamask account' : 'Conta metamask conectada'}: ${account}`}
-                            <p></p>
-                            {walletBalance ? <div>{lang === 'usd' ? 'You have' : 'Você tem'}: {walletBalance} Ethereum</div> : <div>{lang === 'usd' ? 'Could not see the balance of ethereum in your wallet' : 'Não foi possível ver o saldo de ethereum em sua carteira'}</div>}
-                        </>
-                    </div>
-                )}
                 <div>
-                <button className={styles.buttonlink} onClick={() => {
-                    window.location.href = '/';
-                }}>
-                            {lang === 'usd' ? 'Go back to home page' : 'Voltar a pagina inicial'}
-                        </button>
+                    {connected && (
+                        <div className={styles.accountdisplay} >
+                            <button className={styles.buttonlink} id="toggleButton" onClick={toggleBoxVisibility}>{lang === 'usd' ? 'Show account info' : 'Mostrar informações da conta'}</button>
+                            <div id="slideBox" className={`${styles.slidebox} ${isBoxVisible ? styles.show : ''}`}>
+                                <div className={styles.accountinfo2}>
+                                    <div>
+                                        {chainId && <strong>{lang === 'usd' ? 'Connected chain' : 'Rede conectada'}:</strong>} {chainId}
+                                    </div>
+                                    <div>
+                                        {account && <strong>{lang === 'usd' ? 'Connected metamask account' : 'Conta metamask conectada'}:</strong>} {account}
+                                    </div>
+                                    <div>
+                                        {walletBalance ?
+                                            <div>
+                                                <strong>{lang === 'usd' ? 'You have' : 'Você tem'}:</strong> {walletBalance} Ethereum
+                                            </div>
+                                            :
+                                            <div>
+                                                <strong>{lang === 'usd' ? 'Could not see the balance of ethereum in your wallet' : 'Não foi possível ver o saldo de ethereum em sua carteira'}:</strong>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
                 </div>
                 
+
+                <div>
+                    {window.location.pathname === '/' ?
+                        null :
+                        <button className={styles.buttonlink} onClick={() => {
+                            window.location.href = '/';
+                        }}>
+                            {lang === 'usd' ? 'Go back to home page' : 'Voltar a pagina inicial'}
+                        </button>}
+
+                </div>
+
             </div>
 
 
-        </div>
+        </div >
     )
 }

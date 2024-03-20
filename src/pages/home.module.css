@@ -1,5 +1,5 @@
 .homebody{
-    margin-top: 60px;
+    margin-block: 50px;
     width: 100%;
     height: 100%;
     display: flex;
@@ -15,7 +15,7 @@
     padding: 40px;
     border-radius: 5px;
     gap:15px;
-   
+    background-color: white;
 }
 
 .coinbutton{
@@ -34,6 +34,7 @@
     padding:4px;
     font-weight: 400;
     font-size: 18px;
+    background-color: white;
 }
 .infotimer0{
     position: absolute;
@@ -46,6 +47,7 @@
     padding:4px;
     font-weight: 400;
     font-size: 18px;
+    background-color: white;
 }
 
 @media screen and (max-width: 600px) {

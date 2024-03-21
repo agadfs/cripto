@@ -105,6 +105,7 @@ export default function Home() {
 
         getBalance();
     }, [account]);
+    
     useEffect(() => {
         const checkConnection = async () => {
             if (window.ethereum && window.ethereum.selectedAddress) {
@@ -113,10 +114,7 @@ export default function Home() {
                 setIsConnected(false);
             }
         };
-
         checkConnection();
-
-        
         window.ethereum.on('accountsChanged', (accounts) => {
             if (accounts.length > 0) {
                 setIsConnected(true);
@@ -164,7 +162,7 @@ export default function Home() {
                             {lang === 'usd' ? 'Disconnect wallet' : 'Desconectar carteira'}
                         </button>
                     </div>}
-                    {isConnected ? <div style={{color:'white'}} >conectado</div>:<div style={{color:'white'}} >desconectado</div>}
+                    
                 <div>
                     {isConnected && (
                         <div className={styles.accountdisplay} >

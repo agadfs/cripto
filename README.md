@@ -2,6 +2,9 @@
 
 Este é um projeto React que utiliza a API do CoinGecko, a API do MetaMask, Redux e Node.js.
 
+Esse projeto salva informações mínimas no local storage que atualizam a cada 8 segundos, para maior eficiência, desempenho e não exigir muito da api coingecko.
+Uma vez que a versão free dela pode apenas 30 requisições por minuto.
+
 ## Instalação e Execução do Projeto
 
 1. Faça o download dos arquivos do projeto.

@@ -154,7 +154,7 @@ export default function Home() {
                     </div>}
                     
                 <div>
-                    {!connected && (
+                    {isConnected && (
                         <div className={styles.accountdisplay} >
                             <button className={styles.buttonlink} id="toggleButton" onClick={toggleBoxVisibility}>{lang === 'usd' ? 'Show account info' : 'Mostrar informações da conta'}</button>
                             <div id="slideBox" className={`${styles.slidebox} ${isBoxVisible ? styles.show : ''}`}>

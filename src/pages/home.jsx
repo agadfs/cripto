@@ -75,9 +75,9 @@ export default function Home() {
                         <div className={styles.coinbutton} onClick={() => {
                             window.location.href = `/${coins.id}`
                         }} 
-                        style={{ display: 'flex', gap: '10px', justifyContent: 'center', alignContent: 'center', alignItems: 'center', cursor:'pointer' }} 
-                        onMouseEnter={(e) => e.target.style.backgroundColor = 'lightgray'}
-                        onMouseLeave={(e) => e.target.style.backgroundColor = 'initial'}
+                         
+                        onMouseEnter={(e) => e.target.style.backgroundColor = '#232F3E'}
+                        onMouseLeave={(e) => e.target.style.backgroundColor = '#131A22'}
                         key={coins?.id}>
                             <div>
                                 {coins?.market_cap_rank}#

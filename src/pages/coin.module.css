@@ -1,5 +1,8 @@
+* {
+    transition: max-height 0.5s ease; /* mudar o height de forma suave */
+}
 .biggerContainer {
-background-color: white;
+    background-color: #37475A;
     height: 100%;
     display: flex;
     align-items: center;
@@ -12,6 +15,8 @@ background-color: white;
     margin-top: 60px;
     border-radius: 5px;
     border: 1px solid gray;
+    color: white;
+    font-family: sans-serif;
 }
 
 .coinInfoLeft {
@@ -22,7 +27,7 @@ background-color: white;
     width: auto;
     border-bottom: 2px solid rgb(184, 184, 184);
     padding-bottom: 5px;
-    
+
 
 }
 
@@ -38,6 +43,12 @@ background-color: white;
     display: flex;
     justify-content: space-evenly;
     width: auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 15px;
+    height: 100%;
+    background-color: #131A22;
+    border: 1px solid gray;
 }
 
 .chartbody {
@@ -48,9 +59,10 @@ background-color: white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     padding: 15px;
-    height: 100%;
+    height: auto;
+    background-color: #131A22;
     
-    border:1px solid grey;
+    border: 1px solid grey;
 }
 
 .middleinfo {
@@ -58,32 +70,31 @@ background-color: white;
     justify-content: space-between;
     width: 100%;
     margin-top: 30px;
-    
+
 
 
 }
 
 .infobox {
-    width:100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 5px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     padding: 20px;
-    height: auto;
-    border:1px solid grey;
-    
+    height: 100%;
+    border: 1px solid grey;
+    background-color: #131A22;
 }
+
 .infobox2 {
     width: 100%;
     display: flex;
     gap: 20px;
     border-radius: 5px;
     margin-top: 20px;
-   
-   
-    
+
 }
 
 .infoboxsubinfo {
@@ -108,7 +119,7 @@ background-color: white;
 }
 
 .priceinfo {
-    
+    background-color: #131A22;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -116,8 +127,8 @@ background-color: white;
     width: 100%;
     padding: 25px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    margin-inline: 20px;
-    border:1px solid grey;
+
+    border: 1px solid grey;
     border-radius: 5px;
 }
 
@@ -134,7 +145,7 @@ background-color: white;
 }
 
 .priceinfodiv {
-    
+
     border-bottom: 3px solid #55836d;
     border-radius: 5px;
     font-size: 20px;
@@ -151,86 +162,106 @@ background-color: white;
 .chartgraph {
     height: 360px;
     width: 390px;
+
 }
 
 
-
-.aboutbox{
+.aboutbox {
     display: flex;
     flex-direction: column;
     width: auto;
     height: auto;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
-    padding-inline: 15px;
+    padding: 15px;
     font-family: sans-serif;
     font-size: 17px;
-    border:1px solid grey;
+    border: 1px solid grey;
+    background-color: #131A22;
 }
-.infocontainer{
+
+.aboutbox a {
+    color: #FEBD69;
+    text-decoration: none;
+}
+
+.infocontainer {
     display: flex;
     flex-direction: column;
-    gap:10px;
+    gap: 10px;
     width: 100%;
-    
+
 }
-.upperinfotext{
-    font-size: 25px ;
-    font-weight: bold ;
+
+.upperinfotext {
+    font-size: 25px;
+    font-weight: bold;
     font-family: sans-serif;
-     margin-right: 20px;
+    margin-right: 20px;
 }
-.upperinfotextprice{
-    font-size: 25px ;
-    font-weight: bold ;
+
+.upperinfotextprice {
+    font-size: 25px;
+    font-weight: bold;
     font-family: sans-serif;
-     margin-right: 20px;
-     flex-wrap: nowrap;
-     display: flex;
-     width: auto;
+    margin-right: 20px;
+    flex-wrap: nowrap;
+    display: flex;
+    width: auto;
 }
-.graphmodel{
-    width: auto; 
-    display: flex; 
-    flex-direction: column; 
-    gap: 10px
+
+.graphmodel {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+
 }
+
 @media screen and (max-width: 600px) {
-    .upperinfotext{
+    .upperinfotext {
         font-size: 14px;
     }
-    .upperinfotextprice{
+
+    .upperinfotextprice {
         display: flex;
-        font-size: 14px ;
+        font-size: 14px;
         text-wrap: nowrap;
         flex-wrap: wrap;
-        
+
     }
+
     .middleinfo {
         display: flex;
         justify-content: center;
         flex-direction: column;
         align-items: center;
-        gap:10px;
+        gap: 10px;
         width: 100%;
         margin-top: 30px;
-        
-    
-    
+
+
+
     }
-    .infobox2{
+
+    .infobox2 {
         flex-direction: column-reverse;
     }
-    .graphmodel{
-        width: auto; 
-        display: flex; 
-        flex-direction: column; 
+
+    .graphmodel {
+        width: auto;
+        display: flex;
+        flex-direction: column;
         gap: 10px
     }
-    .chartbody{
+
+    .chartbody {
         width: 100%;
+
     }
-    .biggerContainer{
+
+    .biggerContainer {
         margin: 0;
         margin-top: 10px;
     }

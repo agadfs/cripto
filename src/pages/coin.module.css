@@ -27,7 +27,7 @@
     width: auto;
     border-bottom: 2px solid rgb(184, 184, 184);
     padding-bottom: 5px;
-
+    
 
 }
 
@@ -93,7 +93,7 @@
     display: flex;
     gap: 20px;
     border-radius: 5px;
-    margin-top: 20px;
+    margin-top: 40px;
 
 }
 
@@ -247,6 +247,7 @@
 
     .infobox2 {
         flex-direction: column-reverse;
+        margin-top: 20px;
     }
 
     .graphmodel {

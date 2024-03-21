@@ -38,6 +38,7 @@
     -webkit-user-select: none;
     touch-action: manipulation;
     margin:10px;
+   
   }
  
   
@@ -87,7 +88,8 @@
 
   .walletinfo{
     display: flex;
-
+    gap:150px;
+    
     
   }
   .slidebox {
@@ -174,5 +176,8 @@
     }
     .slidebox.show {
       height: 130px; 
+    }
+    .walletinfo{
+      gap:0px;
     }
   }

@@ -113,19 +113,22 @@ export default function Coin() {
     }, [updatedata])
 
     function ChangeHeightDefault(event) {
-        const clickedDiv = event.currentTarget;
-        const currentMaxHeight = clickedDiv.style.maxHeight;
-        const newHeight = currentMaxHeight === '60px' ? '1200px' : '60px';
-       
-        if(newHeight === '60px'){
-            clickedDiv.style.fontSize = '10px'
+        if (windowSize.width < 600) {
 
-        }else{
-            clickedDiv.style.fontSize = '14px'
-
+            const clickedDiv = event.currentTarget;
+            const currentMaxHeight = clickedDiv.style.maxHeight;
+            const newHeight = currentMaxHeight === '60px' ? '1200px' : '60px';
+           
+            if(newHeight === '60px'){
+                clickedDiv.style.fontSize = '10px'
+    
+            }else{
+                clickedDiv.style.fontSize = '14px'
+    
+            }
+            
+            clickedDiv.style.maxHeight = newHeight;
         }
-        
-        clickedDiv.style.maxHeight = newHeight;
     }
     
     return (

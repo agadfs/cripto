@@ -105,8 +105,7 @@ export default function Home() {
 
         getBalance();
     }, [account]);
-    
-    useEffect(() => {
+     useEffect(() => {
         const checkConnection = async () => {
             if (window.ethereum && window.ethereum.selectedAddress) {
                 setIsConnected(true);
@@ -127,7 +126,7 @@ export default function Home() {
             
             window.ethereum.removeAllListeners('accountsChanged');
         };
-    }, []);
+    }, []); 
     return (
         <div className={styles.walletbody} >
             <div className={styles.langcurrency}>
@@ -164,7 +163,7 @@ export default function Home() {
                     </div>}
                     
                 <div>
-                    {isConnected && (
+                    {!connected && (
                         <div className={styles.accountdisplay} >
                             <button className={styles.buttonlink} id="toggleButton" onClick={toggleBoxVisibility}>{lang === 'usd' ? 'Show account info' : 'Mostrar informações da conta'}</button>
                             <div id="slideBox" className={`${styles.slidebox} ${isBoxVisible ? styles.show : ''}`}>

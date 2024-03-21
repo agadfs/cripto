@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { setcurrency, setlanguage } from "../redux/slice";
 import styles from './Wallet.module.css'
 export default function Home() {
-
+    const [isConnected, setIsConnected] = useState(false);
     const { lang, currency } = useSelector(state => state.useroptions);
     const [account, setAccount] = useState();
     const [walletBalance, setWalletBalance] = useState(null);
@@ -64,7 +64,7 @@ export default function Home() {
                     setAccount(null); 
                 } else {
                     const account = accounts[0];
-                    console.log('Logged-in account:', account);
+                    
                     setAccount(account);
                     localStorage.setItem('accountId', account)
                 }
@@ -105,6 +105,31 @@ export default function Home() {
 
         getBalance();
     }, [account]);
+    useEffect(() => {
+        const checkConnection = async () => {
+            if (window.ethereum && window.ethereum.selectedAddress) {
+                setIsConnected(true);
+            } else {
+                setIsConnected(false);
+            }
+        };
+
+        checkConnection();
+
+        
+        window.ethereum.on('accountsChanged', (accounts) => {
+            if (accounts.length > 0) {
+                setIsConnected(true);
+            } else {
+                setIsConnected(false);
+            }
+        });
+
+        return () => {
+            
+            window.ethereum.removeAllListeners('accountsChanged');
+        };
+    }, []);
     return (
         <div className={styles.walletbody} >
             <div className={styles.langcurrency}>
@@ -139,8 +164,9 @@ export default function Home() {
                             {lang === 'usd' ? 'Disconnect wallet' : 'Desconectar carteira'}
                         </button>
                     </div>}
+                    
                 <div>
-                    {connected && (
+                    {isConnected && (
                         <div className={styles.accountdisplay} >
                             <button className={styles.buttonlink} id="toggleButton" onClick={toggleBoxVisibility}>{lang === 'usd' ? 'Show account info' : 'Mostrar informações da conta'}</button>
                             <div id="slideBox" className={`${styles.slidebox} ${isBoxVisible ? styles.show : ''}`}>

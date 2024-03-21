@@ -18,8 +18,8 @@ root.render(
         dappMetadata: {
           name: "MetaMask Account",
           url: window.location.href,
+          
         },
-        
       }}
     >
       <BrowserRouter>

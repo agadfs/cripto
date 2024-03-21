@@ -55,8 +55,27 @@ export default function Home() {
     };
     useEffect(() => {
         const id = localStorage.getItem('accountId')
-        if (id) {
 
+        const fetchData = async () => {
+            try {
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                if (accounts.length === 0) {
+                    console.log('No accounts');
+                    setAccount(null); 
+                } else {
+                    const account = accounts[0];
+                    console.log('Logged-in account:', account);
+                    setAccount(account);
+                    localStorage.setItem('accountId', account)
+                }
+            } catch (error) {
+                console.error('Failed to get accounts:', error);
+                localStorage.removeItem('accountId')
+            }
+        };
+        
+        if (id) {
+            fetchData();
             setAccount(id)
 
         }

@@ -26,7 +26,7 @@ Este é um projeto React que utiliza a API do CoinGecko, a API do MetaMask, Redu
 
 8. As requisições da API do CoinGecko possuem uma demo API pública criada por mim. Caso não esteja funcionando, vá até o site oficial da CoinGecko, crie uma conta e use sua própria API key.
 
-###########################################################################################################################################################################################
+############################################################################################################################################
 
 # My React Project with CoinGecko and MetaMask
 

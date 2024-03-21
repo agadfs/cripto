@@ -26,7 +26,7 @@ export default function Coin() {
             if (mobileDiv) {
                 mobileDiv.forEach((mobileDiv) => {
 
-                   
+
                     mobileDiv.style.maxHeight = '60px';
                     mobileDiv.style.fontSize = '10px';
                     mobileDiv.style.paddingTop = '0px';
@@ -118,19 +118,19 @@ export default function Coin() {
             const clickedDiv = event.currentTarget;
             const currentMaxHeight = clickedDiv.style.maxHeight;
             const newHeight = currentMaxHeight === '60px' ? '1200px' : '60px';
-           
-            if(newHeight === '60px'){
+
+            if (newHeight === '60px') {
                 clickedDiv.style.fontSize = '10px'
-    
-            }else{
+
+            } else {
                 clickedDiv.style.fontSize = '14px'
-    
+
             }
-            
+
             clickedDiv.style.maxHeight = newHeight;
         }
     }
-    
+
     return (
         <div className={styles.biggerContainer}>
             <div className={styles.upperinfo}  >
@@ -172,13 +172,13 @@ export default function Coin() {
 
                 </div>
             </div>
-                <div style={{fontSize:'0px', marginBottom:'-20px', marginTop:'0px'}} id="mobile" >
+            <div style={{ fontSize: '0px', marginBottom: '-20px', marginTop: '0px' }} id="mobile" >
                 {lang === 'usd' ? <h1>Click bellow to expand  </h1> : <h1>Clique abaixo para expandir</h1>}
-                </div>
+            </div>
             <div className={styles.infobox2} >
-                <div  className={styles.infocontainer} >
+                <div className={styles.infocontainer} >
                     <div id="mobile" onClick={ChangeHeightDefault} className={styles.infobox} >
-                        {lang === 'usd' ? <h1>More information about {coin?.name}</h1> : <h1>Mais informações sobre {coin?.name}</h1> }
+                        {lang === 'usd' ? <h1>More information about {coin?.name}</h1> : <h1>Mais informações sobre {coin?.name}</h1>}
                         <div className={styles.infoboxsubinfo} >
                             {lang === 'usd' ? <p> Market Cap</p> : <p> Capitalização de mercado </p>}
                             <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center' }} >
@@ -357,8 +357,8 @@ export default function Coin() {
 
 
                 <div id="mobile" className={styles.chartbody} onClick={ChangeHeightDefault} >
-                    {lang === 'usd' ? <h1>Price fluctuation Graph (30d)</h1> : <h1>Gráfico de Flutuação do preço (30d)</h1>}
-                    <div  >
+                    {lang === 'usd' ? <h1>Price fluctuation Graph ({(currency === 'usd' ? ' USD' : ' BRL')} x 30d)</h1> : <h1>Gráfico de Flutuação do preço (30d)</h1>}
+                    <div>
 
                         {coinChart ?
                             <div className={styles.chartgraph}  >
@@ -422,19 +422,16 @@ export default function Coin() {
                 </div>
                 <div id="mobile" onClick={ChangeHeightDefault} className={styles.chartbody} >
 
-                    {lang === 'usd' ? <h1>Market Cap fluctuation (30d)</h1> : <h1>Flutuação da capitalização de mercado (30d)</h1>}
-                    <div   >
+                    {lang === 'usd' ? <h1>Market Cap fluctuation ({(currency === 'usd' ? ' USD' : ' BRL')} x 30d)</h1> : <h1>Flutuação da capitalização de mercado (30d)</h1>}
+                    <div>
 
                         {coinChart ?
-                            <div id="mobile" onClick={ChangeHeightDefault} className={styles.chartgraph} >
+                            <div onClick={ChangeHeightDefault} className={styles.chartgraph} >
                                 <LineChart
                                     xAxis={[{ data: Array.from({ length: coinChart.market_caps.length }, (_, index) => index + 1) }]}
                                     series={[
                                         {
-                                            data: coinChart.market_caps.map(entry => {
-                                                let value = entry[1]
-                                                return value
-                                            }),
+                                            data: coinChart.market_caps.map(entry => entry[1]),
                                             showMark: false,
                                             valueFormatter: (value => value + (currency === 'usd' ? ' USD' : ' BRL'))
 

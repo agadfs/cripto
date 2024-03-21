@@ -116,10 +116,7 @@ export default function Home() {
         checkConnection();
        
 
-        return () => {
-            
-            window.ethereum.removeAllListeners('accountsChanged');
-        };
+        
     }, []); 
     return (
         <div className={styles.walletbody} >
@@ -144,7 +141,7 @@ export default function Home() {
 
             </div>
             <div className={styles.walletinfo} >
-                {!account ?
+                {!isConnected ?
                     <div>
                         <button className={styles.buttonlink} onClick={connect}>
                             {lang === 'usd' ? 'Connect wallet' : 'Conectar carteira'}

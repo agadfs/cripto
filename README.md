@@ -50,7 +50,7 @@ This is a React project that utilizes the CoinGecko API, MetaMask API, Redux, an
 6. Once the download is complete, start the project with the following command:
    
    ```bash
-   npm install
+   npm start
    
 7. This command will start the development server. You can access the project in your browser at http://localhost:3000 if it's not started automatically.
 

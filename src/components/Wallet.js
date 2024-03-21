@@ -164,7 +164,7 @@ export default function Home() {
                             {lang === 'usd' ? 'Disconnect wallet' : 'Desconectar carteira'}
                         </button>
                     </div>}
-                    
+                    {isConnected ? <div style={{color:'white'}} >conectado</div>:<div style={{color:'white'}} >desconectado</div>}
                 <div>
                     {isConnected && (
                         <div className={styles.accountdisplay} >

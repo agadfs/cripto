@@ -7,7 +7,6 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
 export default function Coin() {
-
     const params = useParams();
     const [coin, setCoin] = useState();
     const [coinChart, setCoinChart] = useState();
@@ -18,22 +17,17 @@ export default function Coin() {
         width: window.innerWidth,
         height: window.innerHeight
     });
-
     useEffect(() => {
         if (windowSize.width < 600) {
-
             const mobileDiv = document.querySelectorAll('#mobile');
             if (mobileDiv) {
                 mobileDiv.forEach((mobileDiv) => {
-
-
                     mobileDiv.style.maxHeight = '60px';
                     mobileDiv.style.fontSize = '10px';
                     mobileDiv.style.paddingTop = '0px';
                     mobileDiv.style.overflow = 'hidden';
                     mobileDiv.style.justifyContent = 'start';
                 })
-
             }
         }
     }, []);
@@ -76,8 +70,6 @@ export default function Coin() {
                 const chartjson = await resdata.json()
                 localStorage.setItem(`oldcoinchart${params.id}`, JSON.stringify(chartjson))
                 setCoinChart(chartjson)
-
-
             }
             catch (error) {
                 console.log('Failed to retrieve graph data: ', error)
@@ -87,50 +79,38 @@ export default function Coin() {
             fetchCoin()
             fetchChart()
             console.log('Getting coin data...')
-
         } else {
             setCoin(JSON.parse(oldcoindata))
             setCoinChart(JSON.parse(oldcoindatachart))
             let countdown = localStorage.getItem('fetchcountdowncoin');
-
             const countdownInterval = setInterval(() => {
                 countdown--;
                 localStorage.setItem('fetchcountdowncoin', countdown)
                 setCountDownTimer(countdown)
                 if (countdown <= 0) {
-
                     clearInterval(countdownInterval);
                     localStorage.setItem('fetchcountdowncoin', 8)
                     fetchCoin()
                     fetchChart()
-
                 }
             }, 1000);
             return () => clearInterval(countdownInterval);
         }
-
-
     }, [updatedata])
 
     function ChangeHeightDefault(event) {
         if (windowSize.width < 600) {
-
             const clickedDiv = event.currentTarget;
             const currentMaxHeight = clickedDiv.style.maxHeight;
             const newHeight = currentMaxHeight === '60px' ? '1200px' : '60px';
-
             if (newHeight === '60px') {
                 clickedDiv.style.fontSize = '10px'
-
             } else {
                 clickedDiv.style.fontSize = '14px'
-
             }
-
             clickedDiv.style.maxHeight = newHeight;
         }
     }
-
     return (
         <div className={styles.biggerContainer}>
             <div className={styles.upperinfo}  >
@@ -142,10 +122,8 @@ export default function Coin() {
                         {coin?.name}
                     </div >
                     <div className={styles.upperinfotext} >
-
                         <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }} >
                             {lang === 'usd' ? <div> Market Cap ({coin?.market_cap_rank}#)</div> : <div> Capitalização de mercado ({coin?.market_cap_rank}#)</div>}
-
                         </div>
                     </div>
                     <div className={styles.upperinfotextprice} >
@@ -159,7 +137,6 @@ export default function Coin() {
                                 ) : (
                                     <div style={{ color: 'green' }}>
                                         <ArrowDropUpIcon />
-
                                     </div>
                                 )}
                                 {coin?.market_data?.price_change_percentage_24h_in_currency[currency]}%
@@ -217,14 +194,9 @@ export default function Coin() {
                             {lang === 'usd' ? <p> Max Supply </p> : <p> Fornecimento máx </p>}
                             <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center', alignItems: 'center' }} >
                                 {coin?.market_data?.max_supply ? <div>{coin?.market_data?.max_supply?.toLocaleString('en-US')} &nbsp; </div> : <div>&infin;</div>}
-
                             </div>
                         </div>
-
-
                     </div>
-
-
                 </div>
                 <div id="mobile" className={styles.priceinfo} onClick={ChangeHeightDefault}>
                     <div className={styles.priceinfotitle} >
@@ -243,7 +215,6 @@ export default function Coin() {
                             ) : (
                                 <div style={{ color: 'green' }}>
                                     <ArrowDropUpIcon />
-
                                 </div>
                             )}{coin?.market_data?.price_change_percentage_1h_in_currency[currency]}%
                         </div>
@@ -279,7 +250,6 @@ export default function Coin() {
                             ) : (
                                 <div style={{ color: 'green' }}>
                                     <ArrowDropUpIcon />
-
                                 </div>
                             )}{coin?.market_data?.price_change_percentage_7d_in_currency[currency]}%
                         </div>
@@ -296,7 +266,6 @@ export default function Coin() {
                             ) : (
                                 <div style={{ color: 'green' }}>
                                     <ArrowDropUpIcon />
-
                                 </div>
                             )}{coin?.market_data?.price_change_percentage_30d_in_currency[currency]}%
                         </div>
@@ -313,7 +282,6 @@ export default function Coin() {
                             ) : (
                                 <div style={{ color: 'green' }}>
                                     <ArrowDropUpIcon />
-
                                 </div>
                             )}{coin?.market_data?.price_change_percentage_60d_in_currency[currency]}%
                         </div>
@@ -330,7 +298,6 @@ export default function Coin() {
                             ) : (
                                 <div style={{ color: 'green' }}>
                                     <ArrowDropUpIcon />
-
                                 </div>
                             )}{coin?.market_data?.price_change_percentage_200d_in_currency[currency]}%
                         </div>
@@ -347,19 +314,14 @@ export default function Coin() {
                             ) : (
                                 <div style={{ color: 'green' }}>
                                     <ArrowDropUpIcon />
-
                                 </div>
                             )}{coin?.market_data?.price_change_percentage_1y_in_currency[currency]}%
                         </div>
                     </div>
                 </div>
-
-
-
                 <div id="mobile" className={styles.chartbody} onClick={ChangeHeightDefault} >
                     {lang === 'usd' ? <h1>Price fluctuation Graph ({(currency === 'usd' ? ' USD' : ' BRL')} x 30d)</h1> : <h1>Gráfico de Flutuação do preço (30d)</h1>}
                     <div>
-
                         {coinChart ?
                             <div className={styles.chartgraph}  >
                                 <LineChart
@@ -399,20 +361,14 @@ export default function Coin() {
                                         }
                                     }}
                                 />
-
-
                             </div> :
-
                             <div>Loading Graph</div>}
-
                     </div>
                 </div>
-
             </div>
             <div className={styles.infobox2}>
                 <div id="mobile" onClick={ChangeHeightDefault} className={styles.aboutbox} >
                     <div>
-
                         {lang === 'usd' ? <h1>About the {coin?.name}</h1> : <h1>Sobre a moeda {coin?.name}</h1>}
                         {lang === 'usd' ? null : <p>OBS: Caso o texto não exista em português, será usado a lingua inglesa(en). </p>}
                     </div>
@@ -421,10 +377,8 @@ export default function Coin() {
 
                 </div>
                 <div id="mobile" onClick={ChangeHeightDefault} className={styles.chartbody} >
-
                     {lang === 'usd' ? <h1>Market Cap fluctuation ({(currency === 'usd' ? ' USD' : ' BRL')} x 30d)</h1> : <h1>Flutuação da capitalização de mercado (30d)</h1>}
                     <div>
-
                         {coinChart ?
                             <div onClick={ChangeHeightDefault} className={styles.chartgraph} >
                                 <LineChart
@@ -434,7 +388,6 @@ export default function Coin() {
                                             data: coinChart.market_caps.map(entry => entry[1]),
                                             showMark: false,
                                             valueFormatter: (value => value + (currency === 'usd' ? ' USD' : ' BRL'))
-
                                         },
                                     ]}
                                     margin={{ left: 115, right: 10 }}

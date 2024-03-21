@@ -18,9 +18,9 @@ Este é um projeto React que utiliza a API do CoinGecko, a API do MetaMask, Redu
    npm install
 
 6. Ao terminar de baixar, inicie o projeto com o seguinte comando:
-  
-  ```bash
-   npm start 
+   
+   ```bash
+   npm start
 
 7. Este comando iniciará o servidor de desenvolvimento. Você poderá acessar o projeto no seu navegador em http://localhost:3000 caso não seja iniciado automaticamente.
 

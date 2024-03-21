@@ -114,13 +114,7 @@ export default function Home() {
             }
         };
         checkConnection();
-        window.ethereum.on('accountsChanged', (accounts) => {
-            if (accounts.length > 0) {
-                setIsConnected(true);
-            } else {
-                setIsConnected(false);
-            }
-        });
+       
 
         return () => {
             

@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux";
 import styles from './home.module.css'
@@ -80,7 +79,7 @@ export default function Home() {
                                 {coins?.market_cap_rank}#
                             </div>
                             <div  >
-                                <img style={{ width: '35px', height: '35px' }} src={coins?.image} />
+                                <img alt="coins" style={{ width: '35px', height: '35px' }} src={coins?.image} />
                             </div>
                             <div> {coins?.name} </div>
                             <div style={{ display: 'flex', gap: '5px' }}  > {coins?.current_price},00 {currencystate === 'usd' ? <div> USD </div> : <div> BRL </div>}</div>

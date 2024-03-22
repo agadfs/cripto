@@ -11,14 +11,11 @@ export default function Coin() {
     const [coin, setCoin] = useState();
     const [coinChart, setCoinChart] = useState();
     const { lang, currency } = useSelector(state => state.useroptions);
-    const [countdowntimer, setCountDownTimer] = useState();
+    
     const [updatedata, setupdatedata] = useState(false);
-    const [windowSize, setWindowSize] = useState({
-        width: window.innerWidth,
-        height: window.innerHeight
-    });
+    
     useEffect(() => {
-        if (windowSize.width < 600) {
+        if (window.innerWidth < 600) {
             const mobileDiv = document.querySelectorAll('#mobile');
             if (mobileDiv) {
                 mobileDiv.forEach((mobileDiv) => {
@@ -86,7 +83,7 @@ export default function Coin() {
             const countdownInterval = setInterval(() => {
                 countdown--;
                 localStorage.setItem('fetchcountdowncoin', countdown)
-                setCountDownTimer(countdown)
+               
                 if (countdown <= 0) {
                     clearInterval(countdownInterval);
                     localStorage.setItem('fetchcountdowncoin', 8)
@@ -99,7 +96,7 @@ export default function Coin() {
     }, [updatedata])
 
     function ChangeHeightDefault(event) {
-        if (windowSize.width < 600) {
+        if (window.innerWidth < 600) {
             const clickedDiv = event.currentTarget;
             const currentMaxHeight = clickedDiv.style.maxHeight;
             const newHeight = currentMaxHeight === '60px' ? '1200px' : '60px';
@@ -116,7 +113,7 @@ export default function Coin() {
             <div className={styles.upperinfo}  >
                 <div className={styles.coinInfoLeft} >
                     <div>
-                        <img src={coin?.image?.small} />
+                        <img alt='coins' src={coin?.image?.small} />
                     </div>
                     <div className={styles.upperinfotext} >
                         {coin?.name}

@@ -88,20 +88,26 @@ export default function Wallet() {
                         }
 
                     }
-                }else{
+                } else {
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
                 localStorage.removeItem('isConnected')
             }
         };
-        
+
         fetchData();
-        const lang =  localStorage.getItem('language');
+        const lang = localStorage.getItem('language');
         const curr = localStorage.getItem('currency');
-        if(lang && curr){
+        if (lang !== null) {
             dispatch(setlanguage(lang));
-        }  dispatch(setcurrency(curr));
+        }else{
+            
+        }
+
+        if (curr !== null) {
+            dispatch(setcurrency(curr));
+        } 
     }, []);
 
     return (

@@ -53,7 +53,7 @@ export default function Wallet() {
         localStorage.removeItem('isConnected');
         localStorage.removeItem('accountId');
     };
-    useEffect(() => {
+   /*  useEffect(() => {
         const fetchData = async () => {
             if (account) {
                 try {
@@ -102,7 +102,7 @@ export default function Wallet() {
             localStorage.setItem('currency', 'usd');
         }
         fetchData();
-    }, []);
+    }, []); */
 
     return (
         <div className={styles.walletbody}>

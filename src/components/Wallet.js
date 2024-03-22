@@ -72,10 +72,10 @@ export default function Wallet() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const provider = await detectEthereumProvider();
-                if (provider) {
-                    const connected = localStorage.getItem('isConnected')
-                    if (connected) {
+                const connected = localStorage.getItem('isConnected')
+                if (connected) {
+                    const provider = await detectEthereumProvider();
+                    if (provider) {
 
                         await provider.request({ method: 'eth_requestAccounts' });
                         const accounts = await provider.request({ method: 'eth_accounts' });

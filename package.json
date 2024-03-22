@@ -6,6 +6,7 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
     "@fontsource/roboto": "^5.0.12",
+    "@metamask/detect-provider": "^2.0.0",
     "@metamask/sdk": "^0.17.2",
     "@metamask/sdk-react": "^0.17.2",
     "@mui/base": "^5.0.0-beta.39",

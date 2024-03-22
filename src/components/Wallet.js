@@ -6,7 +6,7 @@ import styles from './Wallet.module.css';
 import Web3 from "web3";
 
 export default function Wallet() {
-    
+
     const [isConnected, setIsConnected] = useState(false);
     const [account, setAccount] = useState(null);
     const [walletBalance, setWalletBalance] = useState(null);
@@ -65,28 +65,34 @@ export default function Wallet() {
                 }
             }
         };
-        fetchData();
+        const connected = localStorage.getItem('isConnected')
+        if (connected) {
+            fetchData();
+        }
     }, [account]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const provider = await detectEthereumProvider();
-                if (provider) {
-                    const connected = localStorage.getItem('isConnected')
-                    if (connected) {
+                const connected = localStorage.getItem('isConnected')
+                if (connected) {
 
+                    const provider = await detectEthereumProvider();
+                    if (provider) {
                         await provider.request({ method: 'eth_requestAccounts' });
                         const accounts = await provider.request({ method: 'eth_accounts' });
+
                         if (accounts.length > 0) {
                             setAccount(accounts[0]);
                             setIsConnected(true);
                         }
 
                     }
+                }else{
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
+                localStorage.removeItem('isConnected')
             }
         };
 
@@ -150,7 +156,7 @@ export default function Wallet() {
                             </div>
                         </div>
                     )}
-                    
+
                 </div>
 
                 <div>

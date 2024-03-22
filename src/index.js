@@ -5,7 +5,6 @@ import Home from './pages/home';
 import Coin from './pages/coin';
 import { Provider } from 'react-redux'
 import store from './redux/store';
-
 import Wallet from './components/Wallet';
 import "./index.css";
 

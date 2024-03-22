@@ -28,6 +28,7 @@ export default function Wallet() {
         const selectedLanguage = event.target.value;
         dispatch(setlanguage(selectedLanguage));
         localStorage.setItem('language', selectedLanguage);
+
     };
 
     const connectWallet = async () => {
@@ -87,8 +88,13 @@ export default function Wallet() {
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
+                localStorage.removeItem('isConnected')
             }
         };
+        const lang = localStorage.getItem('language');
+        const currency = localStorage.setItem('currency');
+        dispatch(setlanguage(lang));
+        dispatch(setcurrency(currency));
         fetchData();
     }, []);
 
@@ -149,7 +155,7 @@ export default function Wallet() {
                             </div>
                         </div>
                     )}
-                    
+
                 </div>
 
                 <div>

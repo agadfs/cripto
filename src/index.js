@@ -7,12 +7,17 @@ import { Provider } from 'react-redux'
 import store from './redux/store';
 import Wallet from './components/Wallet';
 import "./index.css";
+import MetaMaskSDK from "@metamask/sdk";
 
+new MetaMaskSDK({
+  useDeeplink: false,
+  communicationLayerPreference: "socket",
+});
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
       <BrowserRouter>
-      {/* <Wallet/> */}
+       <Wallet/> 
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:id" element={<Coin />} />

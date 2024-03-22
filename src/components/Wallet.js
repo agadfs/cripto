@@ -95,8 +95,13 @@ export default function Wallet() {
                 localStorage.removeItem('isConnected')
             }
         };
-
+        
         fetchData();
+        const lang =  localStorage.getItem('language');
+        const curr = localStorage.getItem('currency');
+        if(lang && curr){
+            dispatch(setlanguage(lang));
+        }  dispatch(setcurrency(curr));
     }, []);
 
     return (

@@ -6,7 +6,7 @@ import styles from './Wallet.module.css';
 import Web3 from "web3";
 
 export default function Wallet() {
-
+    
     const [isConnected, setIsConnected] = useState(false);
     const [account, setAccount] = useState(null);
     const [walletBalance, setWalletBalance] = useState(null);
@@ -28,7 +28,6 @@ export default function Wallet() {
         const selectedLanguage = event.target.value;
         dispatch(setlanguage(selectedLanguage));
         localStorage.setItem('language', selectedLanguage);
-
     };
 
     const connectWallet = async () => {
@@ -53,7 +52,7 @@ export default function Wallet() {
         localStorage.removeItem('isConnected');
         localStorage.removeItem('accountId');
     };
-     /* useEffect(() => {
+    useEffect(() => {
         const fetchData = async () => {
             if (account) {
                 try {
@@ -72,10 +71,10 @@ export default function Wallet() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const connected = localStorage.getItem('isConnected')
-                if (connected) {
-                    const provider = await detectEthereumProvider();
-                    if (provider) {
+                const provider = await detectEthereumProvider();
+                if (provider) {
+                    const connected = localStorage.getItem('isConnected')
+                    if (connected) {
 
                         await provider.request({ method: 'eth_requestAccounts' });
                         const accounts = await provider.request({ method: 'eth_accounts' });
@@ -88,35 +87,25 @@ export default function Wallet() {
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
-                localStorage.removeItem('isConnected')
             }
         };
-        const lang = localStorage.getItem('language');
-        const currency = localStorage.getItem('currency');
-        if (lang && currency) {
 
-            dispatch(setlanguage(lang));
-            dispatch(setcurrency(currency));
-        } else {
-            localStorage.setItem('language', 'usd');
-            localStorage.setItem('currency', 'usd');
-        }
         fetchData();
-    }, []);  */
+    }, []);
 
     return (
         <div className={styles.walletbody}>
             <div className={styles.langcurrency}>
                 <div>
                     <div>{lang === 'usd' ? 'Select the currency' : 'Selecione a moeda'}</div>
-                    <select style={{ margin: '5px', padding: '5px' }} onChange={() => handleCurrencyChange()} value={currency}>
+                    <select style={{ margin: '5px', padding: '5px' }} onChange={handleCurrencyChange} value={currency}>
                         <option value="usd">USD</option>
                         <option value="brl">BRL</option>
                     </select>
                 </div>
                 <div>
                     <div>{lang === 'usd' ? 'Choose the language' : 'Escolha o idioma'}</div>
-                    <select style={{ margin: '5px', padding: '5px' }} onChange={() => handleLanguageChange()} value={lang}>
+                    <select style={{ margin: '5px', padding: '5px' }} onChange={handleLanguageChange} value={lang}>
                         <option value="usd">EN-USA</option>
                         <option value="brl">PT-BR</option>
                     </select>
@@ -125,12 +114,12 @@ export default function Wallet() {
             <div className={styles.walletinfo}>
                 {!isConnected ?
                     <div>
-                        <button className={styles.buttonlink} onClick={() => connectWallet()}>
+                        <button className={styles.buttonlink} onClick={connectWallet}>
                             {lang === 'usd' ? 'Connect wallet' : 'Conectar carteira'}
                         </button>
                     </div> :
                     <div>
-                        <button className={styles.buttonlink} onClick={() => disconnectWallet()}>
+                        <button className={styles.buttonlink} onClick={disconnectWallet}>
                             {lang === 'usd' ? 'Disconnect wallet' : 'Desconectar carteira'}
                         </button>
                     </div>
@@ -138,7 +127,7 @@ export default function Wallet() {
                 <div>
                     {isConnected && (
                         <div className={styles.accountdisplay}>
-                            <button className={styles.buttonlink} id="toggleButton" onClick={() => toggleBoxVisibility()}>
+                            <button className={styles.buttonlink} id="toggleButton" onClick={toggleBoxVisibility}>
                                 {lang === 'usd' ? 'Show account info' : 'Mostrar informações da conta'}
                             </button>
                             <div id="slideBox" className={`${styles.slidebox} ${isBoxVisible ? styles.show : ''}`}>
@@ -161,7 +150,7 @@ export default function Wallet() {
                             </div>
                         </div>
                     )}
-
+                    
                 </div>
 
                 <div>

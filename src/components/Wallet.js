@@ -6,7 +6,7 @@ import styles from './Wallet.module.css';
 import Web3 from "web3";
 
 export default function Wallet() {
-    const [provider, setProvider] = useState(null);
+
     const [isConnected, setIsConnected] = useState(false);
     const [account, setAccount] = useState(null);
     const [walletBalance, setWalletBalance] = useState(null);
@@ -89,7 +89,6 @@ export default function Wallet() {
                 console.error('Error fetching data:', error);
             }
         };
-
         fetchData();
     }, []);
 

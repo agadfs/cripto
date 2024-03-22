@@ -92,7 +92,7 @@ export default function Wallet() {
             }
         };
         const lang = localStorage.getItem('language');
-        const currency = localStorage.setItem('currency');
+        const currency = localStorage.getItem('currency');
         dispatch(setlanguage(lang));
         dispatch(setcurrency(currency));
         fetchData();

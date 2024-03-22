@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
       <BrowserRouter>
-      <Wallet/>
+      {/* <Wallet/> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:id" element={<Coin />} />

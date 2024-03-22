@@ -109,14 +109,14 @@ export default function Wallet() {
             <div className={styles.langcurrency}>
                 <div>
                     <div>{lang === 'usd' ? 'Select the currency' : 'Selecione a moeda'}</div>
-                    <select style={{ margin: '5px', padding: '5px' }} onChange={() => handleCurrencyChange} value={currency}>
+                    <select style={{ margin: '5px', padding: '5px' }} onChange={() => handleCurrencyChange()} value={currency}>
                         <option value="usd">USD</option>
                         <option value="brl">BRL</option>
                     </select>
                 </div>
                 <div>
                     <div>{lang === 'usd' ? 'Choose the language' : 'Escolha o idioma'}</div>
-                    <select style={{ margin: '5px', padding: '5px' }} onChange={() => handleLanguageChange} value={lang}>
+                    <select style={{ margin: '5px', padding: '5px' }} onChange={() => handleLanguageChange()} value={lang}>
                         <option value="usd">EN-USA</option>
                         <option value="brl">PT-BR</option>
                     </select>

@@ -52,8 +52,6 @@ export default function Wallet() {
         localStorage.removeItem('isConnected');
         localStorage.removeItem('accountId');
     };
-
-
     useEffect(() => {
         const fetchData = async () => {
             if (account) {
@@ -152,24 +150,9 @@ export default function Wallet() {
                             </div>
                         </div>
                     )}
-                    <div className={styles.accountinfo2}>
-                                    <div>
-                                        {account && <strong>{lang === 'usd' ? 'Connected metamask account' : 'Conta metamask conectada'}:</strong>} {account}
-                                    </div>
-                                    <div>
-                                        {walletBalance ?
-                                            <div>
-                                                <strong>{lang === 'usd' ? 'You have' : 'Você tem'}:</strong> {walletBalance} Ethereum
-                                            </div>
-                                            :
-                                            <div>
-                                                <strong>{lang === 'usd' ? 'Could not see the balance of ethereum in your wallet' : 'Não foi possível ver o saldo de ethereum em sua carteira'}:</strong>
-                                            </div>
-                                        }
-                                    </div>
-                                </div>
+                    
                 </div>
-                
+
                 <div>
                     {window.location.pathname === '/' ?
                         null :

@@ -12,16 +12,7 @@ import "./index.css";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <MetaMaskProvider
-      debug={false}
-      sdkOptions={{
-        dappMetadata: {
-          name: "MetaMask Account",
-          url: window.location.href,
-          
-        },
-      }}
-    >
+    
       <BrowserRouter>
       <Wallet/>
         <Routes>
@@ -29,7 +20,7 @@ root.render(
           <Route path="/:id" element={<Coin />} />
         </Routes>
       </BrowserRouter>
-    </MetaMaskProvider>
+   
   </Provider>
 
 );

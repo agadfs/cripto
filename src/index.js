@@ -23,7 +23,7 @@ root.render(
       }}
     >
       <BrowserRouter>
-      <Wallet/>
+      {/* <Wallet/> */}
         <Routes>
           <Route index element={<Home />} />
           <Route path="/:id" element={<Coin />} />

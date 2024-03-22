@@ -37,6 +37,7 @@ export default function Wallet() {
                 const accounts = await provider.request({ method: 'eth_requestAccounts' });
                 setAccount(accounts[0]);
                 setIsConnected(true);
+                localStorage.setItem('isConnected', true);
             } else {
                 console.error('Please install Metamask to continue.');
             }
@@ -48,7 +49,10 @@ export default function Wallet() {
     const disconnectWallet = () => {
         setAccount(null);
         setIsConnected(false);
+        localStorage.removeItem('isConnected');
+        localStorage.removeItem('accountId');
     };
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -65,6 +69,31 @@ export default function Wallet() {
         };
         fetchData();
     }, [account]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const provider = await detectEthereumProvider();
+                if (provider) {
+                    const connected = localStorage.getItem('isConnected')
+                    if (connected) {
+
+                        await provider.request({ method: 'eth_requestAccounts' });
+                        const accounts = await provider.request({ method: 'eth_accounts' });
+                        if (accounts.length > 0) {
+                            setAccount(accounts[0]);
+                            setIsConnected(true);
+                        }
+
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     return (
         <div className={styles.walletbody}>
@@ -123,7 +152,24 @@ export default function Wallet() {
                             </div>
                         </div>
                     )}
+                    <div className={styles.accountinfo2}>
+                                    <div>
+                                        {account && <strong>{lang === 'usd' ? 'Connected metamask account' : 'Conta metamask conectada'}:</strong>} {account}
+                                    </div>
+                                    <div>
+                                        {walletBalance ?
+                                            <div>
+                                                <strong>{lang === 'usd' ? 'You have' : 'Você tem'}:</strong> {walletBalance} Ethereum
+                                            </div>
+                                            :
+                                            <div>
+                                                <strong>{lang === 'usd' ? 'Could not see the balance of ethereum in your wallet' : 'Não foi possível ver o saldo de ethereum em sua carteira'}:</strong>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
                 </div>
+                
                 <div>
                     {window.location.pathname === '/' ?
                         null :
